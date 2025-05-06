@@ -2,13 +2,15 @@ public abstract class Personnage {
     protected int pv;
     protected int degat;
     protected int defence;
-    //protected StatePersonnage etatPersonnage;
+    //protected StatePersonnage.java etatPersonnage;
 
     protected perdreVid(int nb){
         this.pv -= nb;
     }
 
+    protected abstract choisirAction();
 
+    protected abstract effectuerAction();
 
 
     //getter
