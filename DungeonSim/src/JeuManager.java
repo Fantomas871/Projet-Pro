@@ -5,4 +5,7 @@ public class JeuManager {
     JeuManager(){
         instance = this;
     }
+
+
+
 }

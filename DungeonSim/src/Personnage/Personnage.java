@@ -1,16 +1,18 @@
+package Personnage;
+
 public abstract class Personnage {
     protected int pv;
     protected int degat;
     protected int defence;
     //protected StatePersonnage.java etatPersonnage;
 
-    protected perdreVid(int nb){
+    protected void perdreVid(int nb){
         this.pv -= nb;
     }
 
-    protected abstract choisirAction();
+    protected abstract String choisirAction();
 
-    protected abstract effectuerAction();
+    protected abstract String effectuerAction();
 
 
     //getter
