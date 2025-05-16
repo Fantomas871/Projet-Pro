@@ -1,5 +1,7 @@
 package Personnage;
 
+import java.util.Objects;
+
 public class Joueur extends Personnage{
 
     @Override
@@ -11,4 +13,7 @@ public class Joueur extends Personnage{
     protected String effectuerAction() {
         return "";
     }
+
+
+
 }

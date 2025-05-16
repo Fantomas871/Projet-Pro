@@ -1,5 +1,9 @@
 package Personnage;
 
+import MobStrat.MobStrategy;
+
+import java.util.Objects;
+
 public class Ennemie extends Personnage{
     @Override
     protected String choisirAction() {
@@ -10,4 +14,5 @@ public class Ennemie extends Personnage{
     protected String effectuerAction() {
         return "";
     }
+
 }

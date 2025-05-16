@@ -1,9 +1,11 @@
 package Personnage;
+import MobStrat.MobStrategy;
 import StatePerso.StatePersonnage;
 
 import java.util.ArrayList;
 
 public abstract class Personnage {
+    private MobStrategy mobStrategy;
     protected String nom;
     protected int pv;
     protected int degat;
