@@ -36,6 +36,8 @@ public abstract class Personnage {
 
     public String getNom() {return nom; }
 
+    public MobStrategy getMobStrategy() {return mobStrategy; }
+
     //setter
     public void setPv(int pv) {
         this.pv = pv;

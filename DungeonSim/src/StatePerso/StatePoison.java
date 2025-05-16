@@ -9,10 +9,10 @@ public class StatePoison extends StatePersonnage{
         if(personnage instanceof Joueur){
             personnage.setPv(personnage.getPv()- degatPoison);
             System.out.println(personnage.getNom() + " prend " + degatPoison + " dégat de poison");
-        } else if((personnage instanceof Ennemie)&&(personnage.mobStrategy instanceof MortVivant)){
+        } else if((personnage instanceof Ennemie)&&(personnage.getMobStrategy() instanceof MortVivant)){
             System.out.println(personnage.getNom() + " résiste au degat de poison");
         } else {
-            personnage.setPv(personnage.getPv()- degatPoison);
+            personnage.setPv(personnage.getPv() - degatPoison);
             System.out.println(personnage.getNom() + " prend " + degatPoison + " dégat de poison");
         }
 

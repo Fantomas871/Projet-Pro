@@ -9,7 +9,7 @@ public class StateSaigne extends StatePersonnage{
         if(personnage instanceof Joueur){
             personnage.setPv(personnage.getPv()- degatSaignement);
             System.out.println(personnage.getNom() + " prend " + degatSaignement + " dégat de saignement");
-        } else if(personnage.mobStrategy instanceof Infernal){
+        } else if(personnage.getMobStrategy() instanceof Infernal){
             System.out.println(personnage.getNom() + " résiste au degat de saignement");
         } else {
             personnage.setPv(personnage.getPv()- degatSaignement);
