@@ -5,13 +5,27 @@ import MobStrat.MobStrategy;
 import java.util.Objects;
 
 public class Ennemie extends Personnage{
+
+    private String actionAEffectuer;
     @Override
     protected String choisirAction() {
-        return "";
+        int chance = (int) (Math.random()*10);
+        if(chance>2){
+            this.actionAEffectuer = "attaque";
+        }
+        this.actionAEffectuer = "defend";
+        return actionAEffectuer;
     }
 
     @Override
     protected String effectuerAction() {
+        if(this.actionAEffectuer.equals("attaque")){
+
+        } else if(this.actionAEffectuer.equals("defend")){
+
+        } else {
+            System.out.println("Erreur de choix d'action");
+        }
         return "";
     }
 
