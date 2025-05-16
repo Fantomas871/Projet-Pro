@@ -1,10 +1,14 @@
 package Personnage;
+import StatePerso.StatePersonnage;
+
+import java.util.ArrayList;
 
 public abstract class Personnage {
+    protected String nom;
     protected int pv;
     protected int degat;
     protected int defence;
-    //protected StatePersonnage.java etatPersonnage;
+    protected ArrayList<StatePersonnage> effetEtatPersonnage;
 
     protected void perdreVid(int nb){
         this.pv -= nb;
@@ -28,6 +32,8 @@ public abstract class Personnage {
         return defence;
     }
 
+    public String getNom() {return nom; }
+
     //setter
     public void setPv(int pv) {
         this.pv = pv;
@@ -40,4 +46,6 @@ public abstract class Personnage {
     public void setDefence(int defence) {
         this.defence = defence;
     }
+
+    public void setNom(String nom) {this.nom = nom; }
 }
