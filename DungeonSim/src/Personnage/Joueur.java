@@ -5,21 +5,25 @@ import StateJoueur.*;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Joueur extends Personnage{
+public class Joueur extends Personnage {
 
     private StateJoueur etatJoueur;
 
+    public Joueur(StateJoueur etatJoueur) {
+        this.etatJoueur = etatJoueur;
+    }
 
-    Joueur(StateJoueur etatJoueur){
-        this.etatJoueur = new Menu();
+    public void setEtatJoueur(StateJoueur etatJoueur) {
+        this.etatJoueur = etatJoueur;
     }
 
     @Override
     protected String choisirAction() {
-        etatJoueur.afficheChoix(); //selon l'état du joueur, affiche les commandes du menu, de combat, de déplacement ou d'interaction
-
+        etatJoueur.afficheChoix();
         return "";
     }
+
+
     //@TODO implémenter le choix d'action selon l'état du joueur
     @Override
     protected String effectuerAction() {
