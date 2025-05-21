@@ -1,6 +1,7 @@
 package StatePerso;
 
 import Personnage.*;
+//@TODO si mob passe StateVivant-->StateMort drop des golds ou un objet
 
 public class StateMort extends StatePersonnage{
     void appliquerEffet(Personnage personnage){

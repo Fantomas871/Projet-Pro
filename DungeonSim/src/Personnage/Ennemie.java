@@ -20,9 +20,9 @@ public class Ennemie extends Personnage{
     @Override
     protected String effectuerAction() {
         if(this.actionAEffectuer.equals("attaque")){
-
+            //@TODO implémenter l'attaque
         } else if(this.actionAEffectuer.equals("defend")){
-
+            //@TODO implémenter la défense
         } else {
             System.out.println("Erreur de choix d'action");
         }
