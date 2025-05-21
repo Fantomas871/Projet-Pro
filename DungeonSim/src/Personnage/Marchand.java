@@ -1,7 +1,13 @@
 package Personnage;
 
 public class Marchand extends Personnage{
-    @Override
+	
+    Marchand(String n, int pv, int dmg, int dfc) {
+		super(n, pv, dmg, dfc);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
     protected String choisirAction() {
         return "";
     }

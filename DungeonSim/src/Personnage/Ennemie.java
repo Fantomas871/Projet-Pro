@@ -5,8 +5,15 @@ import MobStrat.MobStrategy;
 import java.util.Objects;
 
 public class Ennemie extends Personnage{
+	
+	MobStrategy type;
 
-    private String actionAEffectuer;
+    public Ennemie(String n, int pv, int dmg, int dfc, MobStrategy t) {
+		super(n, pv, dmg, dfc);
+		this.type=t;
+	}
+
+	private String actionAEffectuer;
     @Override
     protected String choisirAction() {
         int chance = (int) (Math.random()*10);

@@ -6,6 +6,9 @@ public class Carte{
 	Piece [][] generationCarte(int taille){
 		carte=new Piece [taille][taille];
 		
+		// ici je crée l'entrée et la sortie à des positions aléatoire en faisant en sorte qu'elles
+		//ne soient pas côte à côte
+		
 		int entreeX=(int)(Math.random() * taille+1);
 		int entreeY=(int)(Math.random() * taille+1);
 		int sortieX=(int)(Math.random() * taille+1);
@@ -17,8 +20,13 @@ public class Carte{
 		}
 		carte[sortieX][sortieY].setRencontre(5);
 		
+		// ici j'instancie le nombre de salle d'un certain type que je veux
+		
 		int coffre= taille;
 		int marchant= 1;
+		
+		// ce switch case crée toute la carte avec un nombre aléatoire de salles vide et de combats
+		// mais un nombre certain de coffres et marchands
 		
 		for (int i=0; i<taille; i++) {
 			for (int j=0; j<taille; j ++) {
@@ -53,6 +61,8 @@ public class Carte{
 		return carte;
 		
 	}
+	
+	//l'affichage procède ligne par ligne
 	
 	void afficher() {
 		for (int i=0; i<carte.length; i++) {

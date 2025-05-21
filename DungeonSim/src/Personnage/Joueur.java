@@ -4,7 +4,12 @@ import java.util.Objects;
 
 public class Joueur extends Personnage{
 
-    @Override
+    Joueur(String n, int pv, int dmg, int dfc) {
+		super(n, pv, dmg, dfc);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
     protected String choisirAction() {
         return "";
     }

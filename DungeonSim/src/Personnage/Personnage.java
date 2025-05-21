@@ -12,8 +12,15 @@ public abstract class Personnage {
     protected int defence;
     protected ArrayList<StatePersonnage> effetEtatPersonnage;
 
-    protected void perdreVid(int nb){
-        this.pv -= nb;
+    Personnage (String n, int pv, int dmg, int dfc){
+    	this.nom=n;
+    	this.pv=pv;
+    	this.degat=dmg;
+    	this.defence=dfc;
+    }
+    
+    protected void perdreVid(int dmg, int dfc){
+        this.pv -= dmg-dfc;
     }
 
     protected abstract String choisirAction();

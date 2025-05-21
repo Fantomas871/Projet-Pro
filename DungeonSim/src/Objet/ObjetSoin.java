@@ -4,7 +4,7 @@ public class ObjetSoin extends Objet{
 
 	private int soin;
 	
-	ObjetSoin(int p, int s){
+	public ObjetSoin(int p, int s){
 		super(p);
 		this.soin=s;
 	}
