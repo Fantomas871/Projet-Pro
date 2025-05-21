@@ -1,3 +1,5 @@
+
+
 public abstract class Personnage {
     protected int pv;
     protected int degat;
