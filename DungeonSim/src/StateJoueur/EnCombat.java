@@ -5,6 +5,7 @@ import Personnage.Joueur;
 public class EnCombat extends StateJoueur {
 
     public EnCombat(Joueur joueur) {
+        super(joueur);
         afficheChoix();
     }
     @Override
@@ -19,11 +20,11 @@ public class EnCombat extends StateJoueur {
 
     @Override
     public void transitionEtat(String etat) {
-        if (etat.equals("HorsCombat")) {
+        if (etat.equalsIgnoreCase("HorsCombat")) {
             this.joueur.setEtatJoueur(new HorsCombat(this.joueur));
-        } else if (etat.equals("Menu")) {
+        } else if (etat.equalsIgnoreCase("Menu")) {
             this.joueur.setEtatJoueur(new Menu(this.joueur));
-        } else if (etat.equals("EnCombat")) {
+        } else if (etat.equalsIgnoreCase("EnCombat")) {
             System.out.println("Déjà en combat");
         } else {
             System.out.println("Etat du joueur inconnu");

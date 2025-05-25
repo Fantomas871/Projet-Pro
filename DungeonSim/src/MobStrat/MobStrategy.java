@@ -4,6 +4,6 @@ import Personnage.*;
 
 public abstract class MobStrategy {
 
-    abstract void executeStrategy(Personnage personnage);
+    public abstract void executeStrategy(Personnage personnage);
 
 }

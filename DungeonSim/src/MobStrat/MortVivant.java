@@ -1,10 +1,13 @@
 package MobStrat;
 import Personnage.*;
+import StatePerso.StatePoison;
 
 public class MortVivant extends MobStrategy {
     //@TODO donne l'état poison à ses attaques
     @Override
-    void executeStrategy(Personnage personnage) {
-
+    public void executeStrategy(Personnage personnage) {
+        // Ajouter l'effet de poison à la cible
+        personnage.getEffetEtatPersonnage().add(new StatePoison());
+        System.out.println(personnage.getNom() + " est empoisonné.");
     }
 }

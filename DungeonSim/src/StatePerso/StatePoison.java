@@ -4,7 +4,8 @@ import MobStrat.MortVivant;
 import Personnage.*;
 
 public class StatePoison extends StatePersonnage{
-    void appliquerEffet(Personnage personnage){
+    @Override
+    public void appliquerEffet(Personnage personnage){
         int degatPoison = (int) (  Math.round(personnage.getPv()*0.01));
         if(personnage instanceof Joueur){
             personnage.setPv(personnage.getPv()- degatPoison);

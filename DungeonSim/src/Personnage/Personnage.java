@@ -12,6 +12,10 @@ public abstract class Personnage {
     protected int defence;
     protected ArrayList<StatePersonnage> effetEtatPersonnage;
 
+    public Personnage() {
+        this.effetEtatPersonnage = new ArrayList<>();
+    }
+
     protected void perdreVid(int nb){
         this.pv -= nb;
     }
@@ -37,6 +41,10 @@ public abstract class Personnage {
     public String getNom() {return nom; }
 
     public MobStrategy getMobStrategy() {return mobStrategy; }
+    
+    public ArrayList<StatePersonnage> getEffetEtatPersonnage() {
+        return effetEtatPersonnage;
+    }
 
     //setter
     public void setPv(int pv) {
@@ -52,4 +60,8 @@ public abstract class Personnage {
     }
 
     public void setNom(String nom) {this.nom = nom; }
+    
+    public void setMobStrategy(MobStrategy mobStrategy) {
+        this.mobStrategy = mobStrategy;
+    }
 }
