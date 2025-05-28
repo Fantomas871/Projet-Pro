@@ -16,6 +16,7 @@ public class HorsCombat extends StateJoueur {
         boolean flagSortieBoucle = false;
         System.out.println("Entrer N-S-E-O pour changer de salle dans la direction choisie");
         System.out.println("Entrer F pour interagir");
+        System.out.println("Entrer M pour afficher la carte");
         System.out.println("Entrer menu pour ouvrir le menu");
         Scanner scanner = new Scanner(System.in);
 
@@ -27,9 +28,30 @@ public class HorsCombat extends StateJoueur {
                 flagSortieBoucle = true;
             } else if (action.equalsIgnoreCase("N") || action.equalsIgnoreCase("S") || action.equalsIgnoreCase("E") || action.equalsIgnoreCase("O")) {
                 // Implémenter le déplacement
+                switch (action) {
+                    case("N")://@TODO vérifier que le déplacement est possible à partir des coordonnées, si oui les effectuées
+                    case("n"): joueur.getCarte();
+                        break;
+                    case("S"):
+                    case("s"):
+                        break;
+                    case("E"):
+                    case("e"):
+                        break;
+                    case("O"):
+                    case("o"):
+                        break;
+                    default:
+                        System.out.println("how did you get here, how, just how!!");
+                        break;
+                }
+
                 System.out.println("Déplacement vers " + action);
                 flagSortieBoucle = true;
-            } else if (action.equalsIgnoreCase("F")) {
+            } else if (action.equalsIgnoreCase("M")){
+                joueur.getCarte().afficher();
+                flagSortieBoucle = true;
+            }else if (action.equalsIgnoreCase("F")) {
                 // Implémenter l'interaction
                 System.out.println("Il n'y a rien ici.");
                 flagSortieBoucle = true;
