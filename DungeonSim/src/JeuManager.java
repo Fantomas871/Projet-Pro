@@ -1,5 +1,6 @@
-import Personnage.Joueur;
+import Personnage.*;
 import StateJoueur.Menu;
+import StateJoueur.StateJoueur;
 
 public class JeuManager {
     private static JeuManager instance;
@@ -24,8 +25,11 @@ public class JeuManager {
         joueur.setDefence(5);
         
         // Ouvrir le menu au lancement
-        Menu menuInitial = new Menu(joueur);
-        joueur.setEtatJoueur(menuInitial);
-        
+        joueur.setEtatJoueur(new Menu(joueur));
+
+        while(true){
+            joueur.getEtatJoueur().afficheChoix();
+        }
+
     }
 }

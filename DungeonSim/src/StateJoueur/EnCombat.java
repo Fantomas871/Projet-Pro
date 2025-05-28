@@ -6,7 +6,7 @@ public class EnCombat extends StateJoueur {
 
     public EnCombat(Joueur joueur) {
         super(joueur);
-        afficheChoix();
+
     }
     @Override
     public void afficheChoix() {
