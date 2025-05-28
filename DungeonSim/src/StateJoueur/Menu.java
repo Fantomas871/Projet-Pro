@@ -9,7 +9,7 @@ public class Menu extends StateJoueur {
 
     public Menu(Joueur joueur) {
         super(joueur);
-        afficheChoix();
+
     }
 
     @Override

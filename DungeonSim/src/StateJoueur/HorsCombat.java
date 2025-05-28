@@ -8,7 +8,7 @@ public class HorsCombat extends StateJoueur {
 
     public HorsCombat(Joueur joueur) {
         super(joueur);
-        afficheChoix();
+
     }
 
     @Override
@@ -20,6 +20,7 @@ public class HorsCombat extends StateJoueur {
         Scanner scanner = new Scanner(System.in);
 
         while (!flagSortieBoucle) {
+
             String action = scanner.nextLine();
             if (action.equalsIgnoreCase("menu")) {
                 transitionEtat(action);
