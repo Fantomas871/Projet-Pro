@@ -1,5 +1,6 @@
 package Personnage;
 
+import Carte.Carte;
 import StateJoueur.*;
 
 import java.util.Scanner;
@@ -7,6 +8,7 @@ import java.util.Scanner;
 public class Joueur extends Personnage {
 
     private StateJoueur etatJoueur;
+    private Carte carte;
 
     public Joueur() {
         super(); // Appel au constructeur parent pour initialiser les listes
@@ -31,7 +33,6 @@ public class Joueur extends Personnage {
 
     Joueur(String n, int pv, int dmg, int dfc) {
 		super(n, pv, dmg, dfc);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -44,11 +45,20 @@ public class Joueur extends Personnage {
         return scanner.nextLine();
     }
 
-    //@TODO implémenter le choix d'action selon l'état du joueur
+    //@TODO implémenter le choix d'action selon l'état du joueur/ y'a peut être pas besoin de cette méthode, tout peut être fait dans les StateJoueurs
     @Override
     protected String effectuerAction() {
         String action = choisirAction();
         // Traitement de l'action selon l'état du joueur
         return action;
+    }
+
+
+    public Carte getCarte() {
+        return carte;
+    }
+
+    public void setCarte(Carte carte) {
+        this.carte = carte;
     }
 }
