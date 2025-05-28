@@ -29,7 +29,12 @@ public class Joueur extends Personnage {
         this.etatJoueur = etatJoueur;
     }
 
-    @Override
+    Joueur(String n, int pv, int dmg, int dfc) {
+		super(n, pv, dmg, dfc);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
     protected String choisirAction() {
         if (etatJoueur != null) {
             etatJoueur.afficheChoix();
