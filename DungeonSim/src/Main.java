@@ -1,4 +1,3 @@
-import Carte.*;
 
 public class Main {
 
@@ -7,7 +6,10 @@ public class Main {
         
         // Lancement du jeu via le gestionnaire de jeu
         JeuManager jeuManager = JeuManager.getInstance();
+
         jeuManager.lancerJeu();
+
+
         
 /*
         // Taille de la carte
