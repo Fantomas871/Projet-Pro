@@ -74,6 +74,21 @@ public class Carte{
 		return carte;
 	}
 	
+	public int [] positionDepart (Carte c){
+		int[] position= new int [2];
+		for (int i = 0; i < c.carte.length; i++) {
+			for (int j = 0; j < c.carte.length; j++) {
+				if (c.carte[i][j].getRencontre()==4) {
+					position [0]=i;
+					position [1]=j;
+				}
+			}
+		}
+		return position;
+	}
+	
+	
+	
 	public void afficher() {
 		for (int i = 0; i < carte.length; i++) {
 			for (int j = 0; j < carte.length; j++) {
