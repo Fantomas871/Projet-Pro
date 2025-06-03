@@ -28,34 +28,51 @@ public class HorsCombat extends StateJoueur {
                 flagSortieBoucle = true;
             } else if (action.equalsIgnoreCase("N") || action.equalsIgnoreCase("S") || action.equalsIgnoreCase("E") || action.equalsIgnoreCase("O")) {
                 // Implémenter le déplacement
+                int[] taille = joueur.getCarte().getTaille();
                 switch (action) {
-                    case("N")://@TODO modifier l'affichage de la carte après déplacement
-                    case("n"): if(joueur.getY()-1>0){
-                        joueur.setY(joueur.getY()-1);
-                    }else System.out.println("Déplacement impossible");
+                    case "N":
+                    case "n":
+                        if (joueur.getY() - 1 >= 0) {
+                            joueur.setY(joueur.getY() - 1);
+                            System.out.println("Déplacement vers le nord");
+                        } else {
+                            System.out.println("Déplacement impossible");
+                        }
                         break;
-                    case("S"):
-                    case("s"): if (joueur.getY()+1>joueur.getCarte().getCarte().length){
-                        joueur.setY(joueur.getY()+1);
-
-                    }else System.out.println("Déplacement impossible");
+                    case "S":
+                    case "s":
+                        if (joueur.getY() + 1 < taille[1]) {
+                            joueur.setY(joueur.getY() + 1);
+                            System.out.println("Déplacement vers le sud");
+                        } else {
+                            System.out.println("Déplacement impossible");
+                        }
                         break;
-                    case("E"):
-                    case("e"): if (joueur.getX()+1>joueur.getCarte().getCarte().length){
-                        joueur.setY(joueur.getX()+1);
-                    }else System.out.println("Déplacement impossible");
+                    case "E":
+                    case "e":
+                        if (joueur.getX() + 1 < taille[0]) {
+                            joueur.setX(joueur.getX() + 1);
+                            System.out.println("Déplacement vers l'est");
+                        } else {
+                            System.out.println("Déplacement impossible");
+                        }
                         break;
-                    case("O"):
-                    case("o"):if (joueur.getY()-1>0){
-                        joueur.setY(joueur.getY()-1);
-                    }else System.out.println("Déplacement impossible");
+                    case "O":
+                    case "o":
+                        if (joueur.getX() - 1 >= 0) {
+                            joueur.setX(joueur.getX() - 1);
+                            System.out.println("Déplacement vers l'ouest");
+                        } else {
+                            System.out.println("Déplacement impossible");
+                        }
                         break;
                     default:
-                        System.out.println("how did you get here, how, just how!!");
+                        System.out.println("Comment êtes-vous arrivé ici, comment, juste comment ?!");
                         break;
                 }
 
-                System.out.println("Déplacement vers " + action);
+                joueur.getCarte().trueSight(joueur.getCarte());
+
                 flagSortieBoucle = true;
             } else if (action.equalsIgnoreCase("M")){
                 joueur.getCarte().afficher();
