@@ -9,6 +9,9 @@ public class Joueur extends Personnage {
 
     private StateJoueur etatJoueur;
     private Carte carte;
+    //position du joueur sur la carte
+    private int x;
+    private int y;
 
     public Joueur() {
         super(); // Appel au constructeur parent pour initialiser les listes
@@ -16,6 +19,9 @@ public class Joueur extends Personnage {
         this.setPv(100);
         this.setDegat(15);
         this.setDefence(10);
+        this.x = carte.positionDepart(carte)[0];
+        this.y = carte.positionDepart(carte)[1];
+
     }
 
     public Joueur(StateJoueur etatJoueur) {
@@ -60,5 +66,21 @@ public class Joueur extends Personnage {
 
     public void setCarte(Carte carte) {
         this.carte = carte;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
     }
 }
