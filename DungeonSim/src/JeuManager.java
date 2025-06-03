@@ -1,4 +1,6 @@
 import Carte.*;
+import Factory.FactoryObjet;
+import Objet.Objet;
 import Personnage.*;
 import StateJoueur.*;
 
@@ -27,7 +29,6 @@ public class JeuManager {
 
         // attribution de la carte
         carte.setCarte(maCarte);
-
 
 
         // Création du joueur

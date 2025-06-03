@@ -1,8 +1,12 @@
 package StateJoueur;
 
 import Personnage.Joueur;
+import Personnage.Marchand;
 
 import java.util.Scanner;
+
+import Factory.FactoryObjet;
+import Objet.Objet;
 
 public class HorsCombat extends StateJoueur {
 
@@ -14,10 +18,10 @@ public class HorsCombat extends StateJoueur {
     @Override
     public void afficheChoix() {
         boolean flagSortieBoucle = false;
-        System.out.println("Entrer N-S-E-O pour changer de salle dans la direction choisie");
-        System.out.println("Entrer F pour interagir");
-        System.out.println("Entrer M pour afficher la carte");
-        System.out.println("Entrer menu pour ouvrir le menu");
+        System.out.println("Entrez N-S-E-O pour changer de salle dans la direction choisie");
+        System.out.println("Entrez F pour interagir");
+        System.out.println("Entrez M pour afficher la carte");
+        System.out.println("Entrez menu pour ouvrir le menu");
         Scanner scanner = new Scanner(System.in);
 
         while (!flagSortieBoucle) {
@@ -32,22 +36,25 @@ public class HorsCombat extends StateJoueur {
                     case("N")://@TODO vérifier que le déplacement est possible à partir des coordonnées, si oui les effectuées
                     case("n"): if(joueur.getY()-1>0){
                         joueur.setY(joueur.getY()-1);
+                        joueur.getCarte().visible(joueur.getX(), joueur.getY());
                     }else System.out.println("Déplacement impossible");
                         break;
                     case("S"):
                     case("s"): if (joueur.getY()+1>joueur.getCarte().getCarte().length){
                         joueur.setY(joueur.getY()+1);
-                        joueur.getCarte().getCarte().;
+                        joueur.getCarte().visible(joueur.getX(), joueur.getY());
                     }else System.out.println("Déplacement impossible");
                         break;
                     case("E"):
                     case("e"): if (joueur.getX()+1>joueur.getCarte().getCarte().length){
                         joueur.setY(joueur.getX()+1);
+                        joueur.getCarte().visible(joueur.getX(), joueur.getY());
                     }else System.out.println("Déplacement impossible");
                         break;
                     case("O"):
                     case("o"):if (joueur.getY()-1>0){
                         joueur.setY(joueur.getY()-1);
+                        joueur.getCarte().visible(joueur.getX(), joueur.getY());
                     }else System.out.println("Déplacement impossible");
                         break;
                     default:
@@ -61,8 +68,31 @@ public class HorsCombat extends StateJoueur {
                 joueur.getCarte().afficher();
                 flagSortieBoucle = true;
             }else if (action.equalsIgnoreCase("F")) {
-                // Implémenter l'interaction
+
+            	if (joueur.getCarte().thisRencontre(joueur.getX(), joueur.getY())==2) {
+            		
+            		String [] type = {"degats","protection","soin"};
+            		int rand=(int)Math.random()*3;
+            		Objet obj = FactoryObjet.creerObjet(type[rand]);
+            		System.out.print("Vous avez trouvé un objet."+obj.toString());
+            		System.out.print("Il a été ajouté à votre inventaire.");
+            		joueur.getInventaire().add(obj);
+            		
+            	}else if (joueur.getCarte().thisRencontre(joueur.getX(), joueur.getY())==3) {
+            		System.out.println("Quest ce que t'achète ?");
+            		Marchand re4 = new Marchand("Resident Evil 4", 1, 1000, 1000);
+                    for (int i=0; i<5;i++) {
+                    	String [] type = {"degats","protection","soin"};
+                    	int rand=(int)Math.random()*3;
+                		re4.getInventaire().add(FactoryObjet.creerObjet(type[rand]));
+                    }
+            		re4.montrerMarchandise();
+            		
+            	}else {
+            	
                 System.out.println("Il n'y a rien ici.");
+                
+            	}
                 flagSortieBoucle = true;
             } else if (action.equalsIgnoreCase("M")) {
             	joueur.getCarte().afficher();

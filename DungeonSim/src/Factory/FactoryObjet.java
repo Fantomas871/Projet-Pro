@@ -13,7 +13,7 @@ public class FactoryObjet {
             case "soin":
             	return new ObjetSoin(((int)Math.random()*500)+50,(int)Math.random()*20);
             default:
-                throw new IllegalArgumentException("Type d'ennemi inconnu : " + type);
+                throw new IllegalArgumentException("Type d'objet inconnu : " + type);
         }
     }
 }

@@ -1,8 +1,9 @@
 package Personnage;
 
 import Carte.Carte;
+import Objet.Objet;
 import StateJoueur.*;
-
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Joueur extends Personnage {
@@ -12,6 +13,7 @@ public class Joueur extends Personnage {
     //position du joueur sur la carte
     private int x;
     private int y;
+    private ArrayList<Objet> inventaire;
 
     public Joueur() {
         super(); // Appel au constructeur parent pour initialiser les listes
@@ -21,6 +23,7 @@ public class Joueur extends Personnage {
         this.setDefence(10);
         this.x = carte.positionDepart(carte)[0];
         this.y = carte.positionDepart(carte)[1];
+        this.inventaire=new ArrayList <Objet> ();
 
     }
 
@@ -83,4 +86,12 @@ public class Joueur extends Personnage {
     public void setX(int x) {
         this.x = x;
     }
+
+	public ArrayList<Objet> getInventaire() {
+		return inventaire;
+	}
+
+	public void setInventaire(ArrayList<Objet> inventaire) {
+		this.inventaire = inventaire;
+	}
 }

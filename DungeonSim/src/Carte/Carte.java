@@ -95,10 +95,14 @@ public class Carte{
 		}
 	}
 	
-	public int thisRencontre (int x, int y, Carte c) {
-		int rencontre = c.carte[x][y].getRencontre();
+	public int thisRencontre (int x, int y) {
+		int rencontre = this.carte[x][y].getRencontre();
 		return rencontre;
 		
+	}
+	
+	public void visible (int x, int y) {
+		this.carte[x][y].setVisible(true);
 	}
 	
 	public void afficher() {
@@ -138,19 +142,14 @@ public class Carte{
 						break;
 					}
 				case 4:
-					if (carte[j][i].isVisible()) {
 						System.out.print("E ");
+						break;
+				case 5:
+					if (carte[j][i].isVisible()) {
+						System.out.print("S ");
 						break;
 					}else{
 						System.out.print("? ");
-						break;
-					}
-				case 5:
-					if (carte[j][i].isVisible()) {
-						System.out.print("S");
-						break;
-					}else{
-						System.out.print("?");
 						break;
 					}
 				}
