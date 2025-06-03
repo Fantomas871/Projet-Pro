@@ -1,93 +1,93 @@
 package Carte;
 
-public class Carte{
-	
-	private Piece [][] carte;
-	
+public class Carte {
+
+	private Piece[][] carte;
+
 	public Carte() {
-	    // Constructeur par défaut
+		// Constructeur par défaut
 	}
-	
-	public Piece [][] generationCarte(int taille){
-		carte = new Piece [taille][taille];
-		
+
+	public Piece[][] generationCarte(int taille) {
+		carte = new Piece[taille][taille];
+
 		// Initialiser toutes les pièces d'abord
 		for (int i = 0; i < taille; i++) {
-		    for (int j = 0; j < taille; j++) {
-		        carte[i][j] = new Piece(i, j, 0);
-		    }
+			for (int j = 0; j < taille; j++) {
+				carte[i][j] = new Piece(i, j, 0);
+			}
 		}
-		
+
 		// Générer l'entrée (éviter les indices hors limites)
-		int entreeX = (int)(Math.random() * taille);
-		int entreeY = (int)(Math.random() * taille);
+		int entreeX = (int) (Math.random() * taille);
+		int entreeY = (int) (Math.random() * taille);
 		carte[entreeX][entreeY].setRencontre(4);
-		
+
 		// Générer la sortie
-		int sortieX = (int)(Math.random() * taille);
-		int sortieY = (int)(Math.random() * taille);
-		
+		int sortieX = (int) (Math.random() * taille);
+		int sortieY = (int) (Math.random() * taille);
+
 		while (entreeX == sortieX && entreeY == sortieY) {
-			sortieX = (int)(Math.random() * taille);
-			sortieY = (int)(Math.random() * taille);
+			sortieX = (int) (Math.random() * taille);
+			sortieY = (int) (Math.random() * taille);
 		}
 		carte[sortieX][sortieY].setRencontre(5);
-		
+
 		int coffre = taille;
 		int marchant = 1;
-		
+
 		for (int i = 0; i < taille; i++) {
 			for (int j = 0; j < taille; j++) {
-			    // Ne pas modifier l'entrée et la sortie
-			    if ((i == entreeX && j == entreeY) || (i == sortieX && j == sortieY)) {
-			        continue;
-			    }
-			    
+				// Ne pas modifier l'entrée et la sortie
+				if ((i == entreeX && j == entreeY) || (i == sortieX && j == sortieY)) {
+					continue;
+				}
+
 				int rand = Piece.rencontreAleatoire();
 				switch (rand) {
-			    case 0:
-		        	carte[i][j].setRencontre(0);
-			        break;
-			    case 1:
-		        	carte[i][j].setRencontre(1);
-			        break;
-			    case 2:
-			    	if (coffre > 0) {
-			        	carte[i][j].setRencontre(2);
-			        	coffre--;
-			        } else {
-			            carte[i][j].setRencontre(0);
-			        }
-			        break;
-			    case 3:
-			    	if (marchant > 0) {
-			        	carte[i][j].setRencontre(3); // Correction: mettre 3 pour marchand au lieu de 0
-			        	marchant--;
-			        } else {
-			            carte[i][j].setRencontre(0);
-			        }
-			        break;
+					case 0:
+						carte[i][j].setRencontre(0);
+						break;
+					case 1:
+						carte[i][j].setRencontre(1);
+						break;
+					case 2:
+						if (coffre > 0) {
+							carte[i][j].setRencontre(2);
+							coffre--;
+						} else {
+							carte[i][j].setRencontre(0);
+						}
+						break;
+					case 3:
+						if (marchant > 0) {
+							carte[i][j].setRencontre(3); // Correction: mettre 3 pour marchand au lieu de 0
+							marchant--;
+						} else {
+							carte[i][j].setRencontre(0);
+						}
+						break;
 				}
 			}
 		}
-		
+
 		return carte;
 	}
-	
-	public int [] positionDepart (Carte c){
-		int[] position= new int [2];
+
+	public int[] positionDepart(Carte c) {
+		int[] position = new int[2];
 		for (int i = 0; i < c.carte.length; i++) {
 			for (int j = 0; j < c.carte.length; j++) {
-				if (c.carte[i][j].getRencontre()==4) {
-					position [0]=i;
-					position [1]=j;
+				if (c.carte[i][j].getRencontre() == 4) {
+					position[0] = i;
+					position[1] = j;
 				}
 			}
 		}
 		return position;
 	}
-	
-	public void trueSight (Carte c) { // Fonction pour pouvoir tester le placement
+
+	public void trueSight(Carte c) { // Fonction pour pouvoir tester le placement
 		for (int i = 0; i < c.carte.length; i++) {
 			for (int j = 0; j < c.carte.length; j++) {
 				c.carte[i][j].setVisible(true);
@@ -98,7 +98,7 @@ public class Carte{
 	public int thisRencontre (int x, int y) {
 		int rencontre = this.carte[x][y].getRencontre();
 		return rencontre;
-		
+
 	}
 	
 	public void visible (int x, int y) {
@@ -157,16 +157,22 @@ public class Carte{
 			System.out.println(); // Saut de ligne après chaque ligne, pas après chaque cellule
 		}
 	}
-	
-	
 
-	public Piece [][] getCarte() {
+
+	public Piece[][] getCarte() {
 		return carte;
 	}
 
-	public void setCarte(Piece [][] carte) {
+	public void setCarte(Piece[][] carte) {
 		this.carte = carte;
 	}
 
-
+	public int[] getTaille() {
+		if (carte != null && carte.length > 0) {
+			int maxX = carte.length;
+			int maxY = carte[0].length;
+			return new int[]{maxX, maxY};
+		}
+		return new int[]{0, 0};
+	}
 }

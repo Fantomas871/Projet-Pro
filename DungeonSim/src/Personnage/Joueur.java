@@ -27,9 +27,12 @@ public class Joueur extends Personnage {
 
     }
 
-    public Joueur(StateJoueur etatJoueur) {
+    public Joueur(StateJoueur etatJoueur, Carte carte) {
         this(); // Appel au constructeur par défaut
         this.etatJoueur = etatJoueur;
+        this.carte = carte;
+        this.x = carte.positionDepart(carte)[0];
+        this.y = carte.positionDepart(carte)[1];
     }
 
     public StateJoueur getEtatJoueur() {
@@ -69,6 +72,13 @@ public class Joueur extends Personnage {
 
     public void setCarte(Carte carte) {
         this.carte = carte;
+    }
+
+    public void setCarteInit(Carte carte) {
+
+        this.carte = carte;
+        this.x = carte.positionDepart(carte)[0];
+        this.y = carte.positionDepart(carte)[1];
     }
 
     public int getX() {

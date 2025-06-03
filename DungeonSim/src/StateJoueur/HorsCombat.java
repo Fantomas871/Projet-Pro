@@ -32,6 +32,7 @@ public class HorsCombat extends StateJoueur {
                 flagSortieBoucle = true;
             } else if (action.equalsIgnoreCase("N") || action.equalsIgnoreCase("S") || action.equalsIgnoreCase("E") || action.equalsIgnoreCase("O")) {
                 // Implémenter le déplacement
+                int[] taille = joueur.getCarte().getTaille();
                 switch (action) {
                     case("N")://@TODO vérifier que le déplacement est possible à partir des coordonnées, si oui les effectuées
                     case("n"): if(joueur.getY()-1>0){
@@ -58,11 +59,12 @@ public class HorsCombat extends StateJoueur {
                     }else System.out.println("Déplacement impossible");
                         break;
                     default:
-                        System.out.println("how did you get here, how, just how!!");
+                        System.out.println("Comment êtes-vous arrivé ici, comment, juste comment ?!");
                         break;
                 }
 
-                System.out.println("Déplacement vers " + action);
+                joueur.getCarte().trueSight(joueur.getCarte());
+
                 flagSortieBoucle = true;
             } else if (action.equalsIgnoreCase("M")){
                 joueur.getCarte().afficher();
@@ -94,8 +96,6 @@ public class HorsCombat extends StateJoueur {
                 
             	}
                 flagSortieBoucle = true;
-            } else if (action.equalsIgnoreCase("M")) {
-            	joueur.getCarte().afficher();
             }
         }
     }
