@@ -37,6 +37,7 @@ public class HorsCombat extends StateJoueur {
                     case("S"):
                     case("s"): if (joueur.getY()+1>joueur.getCarte().getCarte().length){
                         joueur.setY(joueur.getY()+1);
+                        joueur.getCarte().getCarte().;
                     }else System.out.println("Déplacement impossible");
                         break;
                     case("E"):
@@ -64,7 +65,7 @@ public class HorsCombat extends StateJoueur {
                 System.out.println("Il n'y a rien ici.");
                 flagSortieBoucle = true;
             } else if (action.equalsIgnoreCase("M")) {
-            	carte.afficher();
+            	joueur.getCarte().afficher();
             }
         }
     }

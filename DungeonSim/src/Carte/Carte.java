@@ -95,6 +95,12 @@ public class Carte{
 		}
 	}
 	
+	public int thisRencontre (int x, int y, Carte c) {
+		int rencontre = c.carte[x][y].getRencontre();
+		return rencontre;
+		
+	}
+	
 	public void afficher() {
 		for (int i = 0; i < carte.length; i++) {
 			for (int j = 0; j < carte.length; j++) {
