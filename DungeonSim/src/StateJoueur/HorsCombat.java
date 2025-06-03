@@ -81,8 +81,6 @@ public class HorsCombat extends StateJoueur {
                 //@TODO Implémenter l'interaction
                 System.out.println("Il n'y a rien ici.");
                 flagSortieBoucle = true;
-            } else if (action.equalsIgnoreCase("M")) {
-            	joueur.getCarte().afficher();
             }
         }
     }
