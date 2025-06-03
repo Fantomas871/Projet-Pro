@@ -40,10 +40,6 @@ public class JeuManager {
         joueur.setDefence(5);
         joueur.setCarte(carte);
 
-
-
-
-
         // Ouvrir le menu au lancement
         joueur.setEtatJoueur(new Menu(joueur));
 
