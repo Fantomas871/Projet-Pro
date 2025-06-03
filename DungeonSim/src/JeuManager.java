@@ -47,8 +47,8 @@ public class JeuManager {
         joueur.setEtatJoueur(new Menu(joueur));
 
         while(true){
-            if(([joueur.getX()][joueur.getY()]) == carte.getCarte()){
-
+            if((joueur.getCarte()).thisRencontre(joueur.getX(), joueur.getY(), joueur.getCarte())==5){
+                System.out.println("Victoire !!");
             }
 
             joueur.getEtatJoueur().afficheChoix();

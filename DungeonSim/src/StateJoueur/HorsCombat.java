@@ -14,10 +14,10 @@ public class HorsCombat extends StateJoueur {
     @Override
     public void afficheChoix() {
         boolean flagSortieBoucle = false;
-        System.out.println("Entrer N-S-E-O pour changer de salle dans la direction choisie");
-        System.out.println("Entrer F pour interagir");
-        System.out.println("Entrer M pour afficher la carte");
-        System.out.println("Entrer menu pour ouvrir le menu");
+        System.out.println("Entrez N-S-E-O pour changer de salle dans la direction choisie");
+        System.out.println("Entrez F pour interagir");
+        System.out.println("Entrez M pour afficher la carte");
+        System.out.println("Entrez menu pour ouvrir le menu");
         Scanner scanner = new Scanner(System.in);
 
         while (!flagSortieBoucle) {
@@ -37,7 +37,7 @@ public class HorsCombat extends StateJoueur {
                     case("S"):
                     case("s"): if (joueur.getY()+1>joueur.getCarte().getCarte().length){
                         joueur.setY(joueur.getY()+1);
-                        joueur.getCarte().getCarte().;
+
                     }else System.out.println("Déplacement impossible");
                         break;
                     case("E"):
@@ -61,7 +61,7 @@ public class HorsCombat extends StateJoueur {
                 joueur.getCarte().afficher();
                 flagSortieBoucle = true;
             }else if (action.equalsIgnoreCase("F")) {
-                // Implémenter l'interaction
+                //@TODO Implémenter l'interaction
                 System.out.println("Il n'y a rien ici.");
                 flagSortieBoucle = true;
             } else if (action.equalsIgnoreCase("M")) {
