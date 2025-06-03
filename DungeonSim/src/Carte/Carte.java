@@ -87,30 +87,66 @@ public class Carte{
 		return position;
 	}
 	
-	
+	public void trueSight (Carte c) { // Fonction pour pouvoir tester le placement
+		for (int i = 0; i < c.carte.length; i++) {
+			for (int j = 0; j < c.carte.length; j++) {
+				c.carte[i][j].setVisible(true);
+			}
+		}
+	}
 	
 	public void afficher() {
 		for (int i = 0; i < carte.length; i++) {
 			for (int j = 0; j < carte.length; j++) {
 				switch (carte[j][i].getRencontre()) {
 				case 0:
-					System.out.print(".");
-					break;
+					if (carte[j][i].isVisible()) {
+						System.out.print(". ");
+						break;
+					}else{
+						System.out.print("? ");
+						break;
+					}
 				case 1:
-					System.out.print("X");
-					break;
+					if (carte[j][i].isVisible()) {
+						System.out.print("X ");
+						break;
+					}else{
+						System.out.print("? ");
+						break;
+					}
 				case 2:
-					System.out.print("C");
-					break;
+					if (carte[j][i].isVisible()) {
+						System.out.print("C ");
+						break;
+					}else{
+						System.out.print("? ");
+						break;
+					}
 				case 3:
-					System.out.print("M");
-					break;
+					if (carte[j][i].isVisible()) {
+						System.out.print("M ");
+						break;
+					}else{
+						System.out.print("? ");
+						break;
+					}
 				case 4:
-					System.out.print("E");
-					break;
+					if (carte[j][i].isVisible()) {
+						System.out.print("E ");
+						break;
+					}else{
+						System.out.print("? ");
+						break;
+					}
 				case 5:
-					System.out.print("S");
-					break;
+					if (carte[j][i].isVisible()) {
+						System.out.print("S");
+						break;
+					}else{
+						System.out.print("?");
+						break;
+					}
 				}
 			}
 			System.out.println(); // Saut de ligne après chaque ligne, pas après chaque cellule
