@@ -17,16 +17,8 @@ public class JeuManager {
     }
 
     public void lancerJeu() {
-        // Création du joueur
-        Joueur joueur = new Joueur();
-        joueur.setNom("Aventurier");
-        joueur.setPv(100);
-        joueur.setDegat(10);
-        joueur.setDefence(5);
-
         // Taille de la carte
         int taille = 5;
-
         // Création d'une instance de Carte
         Carte carte = new Carte();
 
@@ -36,7 +28,18 @@ public class JeuManager {
         // attribution de la carte
         carte.setCarte(maCarte);
 
+
+
+        // Création du joueur
+        Joueur joueur = new Joueur();
+        joueur.setNom("Aventurier");
+        joueur.setPv(100);
+        joueur.setDegat(10);
+        joueur.setDefence(5);
         joueur.setCarte(carte);
+
+
+
 
 
         // Ouvrir le menu au lancement

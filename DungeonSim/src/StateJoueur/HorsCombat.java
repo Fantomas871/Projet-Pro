@@ -30,16 +30,24 @@ public class HorsCombat extends StateJoueur {
                 // Implémenter le déplacement
                 switch (action) {
                     case("N")://@TODO vérifier que le déplacement est possible à partir des coordonnées, si oui les effectuées
-                    case("n"): joueur.getCarte();
+                    case("n"): if(joueur.getY()-1>0){
+                        joueur.setY(joueur.getY()-1);
+                    }else System.out.println("Déplacement impossible");
                         break;
                     case("S"):
-                    case("s"):
+                    case("s"): if (joueur.getY()+1>joueur.getCarte().getCarte().length){
+                        joueur.setY(joueur.getY()+1);
+                    }else System.out.println("Déplacement impossible");
                         break;
                     case("E"):
-                    case("e"):
+                    case("e"): if (joueur.getX()+1>joueur.getCarte().getCarte().length){
+                        joueur.setY(joueur.getX()+1);
+                    }else System.out.println("Déplacement impossible");
                         break;
                     case("O"):
-                    case("o"):
+                    case("o"):if (joueur.getY()-1>0){
+                        joueur.setY(joueur.getY()-1);
+                    }else System.out.println("Déplacement impossible");
                         break;
                     default:
                         System.out.println("how did you get here, how, just how!!");
