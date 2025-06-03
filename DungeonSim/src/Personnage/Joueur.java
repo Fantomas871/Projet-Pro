@@ -21,8 +21,6 @@ public class Joueur extends Personnage {
         this.setPv(100);
         this.setDegat(15);
         this.setDefence(10);
-        this.x = carte.positionDepart(carte)[0];
-        this.y = carte.positionDepart(carte)[1];
         this.inventaire=new ArrayList <Objet> ();
 
     }
