@@ -32,6 +32,7 @@ public class JeuManager {
 
         // Création du joueur
         Joueur joueur = new Joueur();
+        joueur.setCarteInit(carte);
         joueur.setNom("Aventurier");
         joueur.setPv(100);
         joueur.setDegat(10);
@@ -46,6 +47,10 @@ public class JeuManager {
         joueur.setEtatJoueur(new Menu(joueur));
 
         while(true){
+            if(([joueur.getX()][joueur.getY()]) == carte.getCarte()){
+
+            }
+
             joueur.getEtatJoueur().afficheChoix();
         }
 

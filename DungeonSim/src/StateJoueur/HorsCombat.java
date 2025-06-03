@@ -29,7 +29,7 @@ public class HorsCombat extends StateJoueur {
             } else if (action.equalsIgnoreCase("N") || action.equalsIgnoreCase("S") || action.equalsIgnoreCase("E") || action.equalsIgnoreCase("O")) {
                 // Implémenter le déplacement
                 switch (action) {
-                    case("N")://@TODO vérifier que le déplacement est possible à partir des coordonnées, si oui les effectuées
+                    case("N")://@TODO modifier l'affichage de la carte après déplacement
                     case("n"): if(joueur.getY()-1>0){
                         joueur.setY(joueur.getY()-1);
                     }else System.out.println("Déplacement impossible");
