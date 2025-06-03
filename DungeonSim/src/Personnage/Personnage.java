@@ -16,6 +16,13 @@ public abstract class Personnage {
         this.effetEtatPersonnage = new ArrayList<>();
     }
 
+    public Personnage(String n, int pv, int dmg, int dfc) {
+        this.nom = n;
+        this.pv = pv;
+        this.degat = dmg;
+        this.defence = dfc;
+    }
+
     protected void perdreVid(int nb){
         this.pv -= nb;
     }
@@ -23,6 +30,8 @@ public abstract class Personnage {
     protected abstract String choisirAction();
 
     protected abstract String effectuerAction();
+
+
 
 
     //getter

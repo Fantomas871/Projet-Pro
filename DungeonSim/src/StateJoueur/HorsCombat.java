@@ -28,9 +28,38 @@ public class HorsCombat extends StateJoueur {
                 flagSortieBoucle = true;
             } else if (action.equalsIgnoreCase("N") || action.equalsIgnoreCase("S") || action.equalsIgnoreCase("E") || action.equalsIgnoreCase("O")) {
                 // Implémenter le déplacement
+                switch (action) {
+                    case("N")://@TODO vérifier que le déplacement est possible à partir des coordonnées, si oui les effectuées
+                    case("n"): if(joueur.getY()-1>0){
+                        joueur.setY(joueur.getY()-1);
+                    }else System.out.println("Déplacement impossible");
+                        break;
+                    case("S"):
+                    case("s"): if (joueur.getY()+1>joueur.getCarte().getCarte().length){
+                        joueur.setY(joueur.getY()+1);
+                    }else System.out.println("Déplacement impossible");
+                        break;
+                    case("E"):
+                    case("e"): if (joueur.getX()+1>joueur.getCarte().getCarte().length){
+                        joueur.setY(joueur.getX()+1);
+                    }else System.out.println("Déplacement impossible");
+                        break;
+                    case("O"):
+                    case("o"):if (joueur.getY()-1>0){
+                        joueur.setY(joueur.getY()-1);
+                    }else System.out.println("Déplacement impossible");
+                        break;
+                    default:
+                        System.out.println("how did you get here, how, just how!!");
+                        break;
+                }
+
                 System.out.println("Déplacement vers " + action);
                 flagSortieBoucle = true;
-            } else if (action.equalsIgnoreCase("F")) {
+            } else if (action.equalsIgnoreCase("M")){
+                joueur.getCarte().afficher();
+                flagSortieBoucle = true;
+            }else if (action.equalsIgnoreCase("F")) {
                 // Implémenter l'interaction
                 System.out.println("Il n'y a rien ici.");
                 flagSortieBoucle = true;
