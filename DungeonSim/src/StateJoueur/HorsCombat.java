@@ -31,7 +31,7 @@ public class HorsCombat extends StateJoueur {
                 transitionEtat(action);
                 flagSortieBoucle = true;
             } else if (action.equalsIgnoreCase("N") || action.equalsIgnoreCase("S") || action.equalsIgnoreCase("E") || action.equalsIgnoreCase("O")) {
-                // Implémenter le déplacement
+                
                 int[] taille = joueur.getCarte().getTaille();
                 switch (action) {
                     case "N":

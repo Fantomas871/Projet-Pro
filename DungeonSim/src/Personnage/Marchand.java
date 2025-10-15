@@ -4,6 +4,7 @@ package Personnage;
 import java.util.ArrayList;
 
 import Objet.Objet;
+import Factory.*;
 
 public class Marchand extends Personnage{
 	private ArrayList<Objet> inventaire;
@@ -24,6 +25,14 @@ public class Marchand extends Personnage{
     public void montrerMarchandise() {
     	for (int i=0;i<this.inventaire.size();i++) {
     		this.inventaire.get(i).toString();
+    	}
+    }
+    
+    public void remplirIventaire () {
+    	for (int i=0;i<10;i++) {
+    		String [] type = {"degats","protection","soin"};
+    		String random = type[(int)Math.random()*3+1];
+    		this.inventaire.add(FactoryObjet.creerObjet(random));
     	}
     }
 
