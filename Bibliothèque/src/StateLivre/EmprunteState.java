@@ -1,39 +1,37 @@
 package StateLivre;
 
 /**
- * Etat : Livre disponible.
- * Chaque State tient une référence au contexte (généralement l'objet Livre)
- * et utilise la réflexion pour demander au contexte de changer d'état si nécessaire.
+ * Etat : Livre emprunté.
  */
-public class LibreState implements StateLivre {
+public class EmprunteState implements StateLivre {
     private final Object contexte;
 
-    public LibreState(Object contexte) {
+    public EmprunteState(Object contexte) {
         this.contexte = contexte;
     }
 
     @Override
     public void libre() {
-        System.out.println("Le livre est déjà libre.");
+        // retour du livre -> disponible (ou réservé selon la logique du contexte)
+        setStateOnContext(new LibreState(contexte));
+        System.out.println("Transition : Emprunté -> Disponible");
     }
 
     @Override
     public void emprunt() {
-        // transition vers EmprunteState
-        setStateOnContext(new EmprunteState(contexte));
-        System.out.println("Transition : Disponible -> Emprunté");
+        System.out.println("Impossible : le livre est déjà emprunté.");
     }
 
     @Override
     public void reserve() {
-        // transition vers ReserveState
+        // ajouter une réservation : on passe en état réservé (conception simple)
         setStateOnContext(new ReserveState(contexte));
-        System.out.println("Transition : Disponible -> Réservé");
+        System.out.println("Transition : Emprunté -> Réservé (réservation ajoutée)");
     }
 
     @Override
     public String toString() {
-        return "Disponible";
+        return "Emprunté";
     }
 
     private void setStateOnContext(StateLivre nouvelle) {
