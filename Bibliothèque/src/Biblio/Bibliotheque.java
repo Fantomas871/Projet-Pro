@@ -16,6 +16,14 @@ public class Bibliotheque {
 		
 	}
 
+	public void ajouterLivre(Livre l) {
+		this.bibliotheque.add(l);
+	}
+
+	public void ajouterAdherent(Adherent a) {
+		this.adherents.add(a);
+	}
+
 	public String getNom() {
 		return nom;
 	}
