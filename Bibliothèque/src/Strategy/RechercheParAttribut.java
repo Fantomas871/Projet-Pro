@@ -4,6 +4,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JOptionPane;
+
 import Biblio.Livre;
 
 /**
@@ -19,40 +22,60 @@ public class RechercheParAttribut implements StrategieRecherche {
     }
 
     @Override
-    public List<Livre> rechercher(List<Livre> livres, String critere) {
-        List<Livre> resultats = new ArrayList<>();
-        if (critere == null) critere = "";
-        String critLower = critere.toLowerCase();
-        String cap = attribut.isEmpty() ? attribut : Character.toUpperCase(attribut.charAt(0)) + attribut.substring(1);
-        String getterName = "get" + cap;
-
-        for (Livre livre : livres) {
-            try {
-                Object valeur = null;
-                // essayer le getter
-                try {
-                    Method m = livre.getClass().getMethod(getterName);
-                    valeur = m.invoke(livre);
-                } catch (NoSuchMethodException nsme) {
-                    // fallback: chercher le champ directement
-                    try {
-                        Field f = livre.getClass().getDeclaredField(attribut);
-                        f.setAccessible(true);
-                        valeur = f.get(livre);
-                    } catch (NoSuchFieldException | SecurityException ignore) {
-                        // si on ne trouve ni getter ni champ, on ignore
-                    }
-                }
-
-                if (valeur != null) {
-                    String s = String.valueOf(valeur).toLowerCase();
-                    if (s.contains(critLower)) {
-                        resultats.add(livre);
-                    }
-                }
-            } catch (Exception ex) {
-                // ignorer les erreurs pour ne pas interrompre la recherche
+    public ArrayList<Livre> rechercher(ArrayList<Livre> livres, String critere) {
+    	ArrayList<Livre> resultats = new ArrayList<Livre>();
+    	
+    	String valeur = null;
+    	
+    	if (attribut.equals("titre")) {
+            valeur = JOptionPane.showInputDialog(null, "Entrez le titre recherché :");
+        } else if (attribut.equals("auteur")) {
+            valeur = JOptionPane.showInputDialog(null, "Entrez le nom de l'auteur :");
+        } else if (attribut.equals("anneeParution")) {
+            valeur = JOptionPane.showInputDialog(null, "Entrez l'année de parution :");
+        } else if (attribut.equals("genre")) {
+            valeur = JOptionPane.showInputDialog(null, "Entrez le genre recherché :");
+        }
+        
+        for (int i=0; i<livres.size();i++) {
+            switch (critere) {
+            
+            case "titre":
+            	
+            	if (livres.get(i).getTitre().equals(valeur)) {
+            		resultats.add(livres.get(i));
+            		
+            	}
+            	break;
+            	
+            case "auteur":
+            	
+            	if (livres.get(i).getAuteur().equals(valeur)) {
+            		resultats.add(livres.get(i));
+            		
+            	}
+            	break;
+            	
+            case "anneeParution":
+            	
+            	int annee = Integer.parseInt(valeur);
+            	if (livres.get(i).getAnneeParution()==annee) {
+            		resultats.add(livres.get(i));
+            		
+            	}
+            	break;
+            	
+            case "genre":
+            	
+            	if (livres.get(i).getGenre().equals(valeur)) {
+            		resultats.add(livres.get(i));
+            		
+            	}
+            	break;
+            	
+            
             }
+            	
         }
         return resultats;
     }

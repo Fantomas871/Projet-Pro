@@ -1,5 +1,6 @@
 package Strategy;
 
+import java.util.ArrayList;
 import java.util.List;
 import Biblio.Livre;
 
@@ -16,7 +17,7 @@ public class RechercheStrategy {
         this.strategie = strategie;
     }
 
-    public List<Livre> rechercher(List<Livre> livres, String critere) {
+    public ArrayList<Livre> rechercher(ArrayList<Livre> livres, String critere) {
         if (strategie == null) {
             throw new IllegalStateException("Stratégie de recherche non définie.");
         }

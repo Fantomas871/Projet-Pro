@@ -1,47 +1,32 @@
 package StateLivre;
 
-/**
- * Etat : Livre réservé.
- */
-public class ReserveState implements StateLivre {
-    private final Object contexte;
+import Biblio.LivrePhysique;
 
-    public ReserveState(Object contexte) {
-        this.contexte = contexte;
+public class ReserveState implements StateLivre {
+	private final LivrePhysique livre;
+
+    public ReserveState(LivrePhysique livre) {
+        this.livre = livre;
     }
 
     @Override
     public void libre() {
-        // si une réservation est retirée/annulée -> disponible
-        setStateOnContext(new LibreState(contexte));
-        System.out.println("Transition : Réservé -> Disponible");
+        System.out.println("Impossible le livre est réservé");
     }
 
     @Override
     public void emprunt() {
-        // réservation transformée en emprunt
-        setStateOnContext(new EmprunteState(contexte));
-        System.out.println("Transition : Réservé -> Emprunté (par le réservant)");
+    	this.livre.setEtat(new EmprunteState(this.livre));
+        System.out.println("L'ancien propriétaire a rendu le livre il est maintenant pour vous");
     }
 
     @Override
     public void reserve() {
-        System.out.println("Le livre est déjà réservé : ajout dans la file de réservation (si gérée par le contexte).");
+        System.out.println("Le livre est déjà réservé");
     }
 
     @Override
     public String toString() {
         return "Réservé";
-    }
-
-    private void setStateOnContext(StateLivre nouvelle) {
-        if (contexte == null) return;
-        try {
-            contexte.getClass().getMethod("setState", StateLivre.class).invoke(contexte, nouvelle);
-            return;
-        } catch (Exception ignored) {}
-        try {
-            contexte.getClass().getMethod("setEtat", StateLivre.class).invoke(contexte, nouvelle);
-        } catch (Exception ignored) {}
     }
 }

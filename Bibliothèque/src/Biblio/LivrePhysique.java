@@ -8,7 +8,7 @@ public class LivrePhysique extends Livre{
 	public LivrePhysique(String t, String a, int an, String g) {
 		super(t, a, an, g);
 		prixEmprunt = 0.8;
-		setEtat(new StateLivre.LibreState());
+		setEtat(new StateLivre.LibreState(this));
 	}
 
 	public StateLivre.StateLivre getEtat() {

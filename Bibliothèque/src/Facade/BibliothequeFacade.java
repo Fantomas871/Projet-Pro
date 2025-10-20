@@ -9,6 +9,7 @@ import Observer.NotificationService;
 import Persistence.BibliothequeDAO;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,12 +35,12 @@ public class BibliothequeFacade {
         notificationService.removeObserver(obs);
     }
 
-    public List<Livre> rechercher(StrategieRecherche rechercheStrategy, String critere) {
+    public ArrayList<Livre> rechercher(StrategieRecherche rechercheStrategy, String critere) {
         // Délégation simple : la façade fournit un point d'entrée unifié.
         // L'appel réel se fait via la stratégie : l'appel ci-dessous suppose que vous récupérez la liste de livres depuis bibliotheque.
         // TODO : remplacer bibliotheque.getLivres() par la méthode réelle de votre classe Bibliotheque
         try {
-            List<Livre> livres = (List<Livre>) bibliotheque.getClass().getMethod("getLivres").invoke(bibliotheque);
+            ArrayList<Livre> livres = (ArrayList<Livre>) bibliotheque.getClass().getMethod("getLivres").invoke(bibliotheque);
             return rechercheStrategy.rechercher(livres, critere);
         } catch (Exception ex) {
             throw new UnsupportedOperationException("Adapter la façade : méthode getLivres() introuvable sur Bibliotheque", ex);
