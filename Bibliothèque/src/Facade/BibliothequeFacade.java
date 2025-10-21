@@ -3,6 +3,7 @@ package Facade;
 import Biblio.Adherent;
 import Biblio.Bibliotheque;
 import Biblio.Livre;
+import Biblio.LivrePhysique;
 import Strategy.StrategieAmende;
 import Strategy.StrategieRecherche;
 import Observer.NotificationService;
@@ -10,12 +11,7 @@ import Persistence.BibliothequeDAO;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
-/**
- * Facade pour simplifier l'utilisation des sous-systèmes (persistence, notifications, stratégies).
- * Les méthodes sont des stubs génériques : adaptez les appels internes selon les méthodes réelles de Biblio.Bibliotheque.
- */
 public class BibliothequeFacade {
     private final Bibliotheque bibliotheque;
     private final NotificationService notificationService;
@@ -36,20 +32,15 @@ public class BibliothequeFacade {
     }
 
     public ArrayList<Livre> rechercher(StrategieRecherche rechercheStrategy, String critere) {
-        // Délégation simple : la façade fournit un point d'entrée unifié.
-        // L'appel réel se fait via la stratégie : l'appel ci-dessous suppose que vous récupérez la liste de livres depuis bibliotheque.
-        // TODO : remplacer bibliotheque.getLivres() par la méthode réelle de votre classe Bibliotheque
-        try {
-            ArrayList<Livre> livres = (ArrayList<Livre>) bibliotheque.getClass().getMethod("getLivres").invoke(bibliotheque);
-            return rechercheStrategy.rechercher(livres, critere);
-        } catch (Exception ex) {
-            throw new UnsupportedOperationException("Adapter la façade : méthode getLivres() introuvable sur Bibliotheque", ex);
-        }
+        ArrayList<Livre> livres = bibliotheque.getBibliotheque();
+        return rechercheStrategy.rechercher(livres, critere);
     }
 
-    public void notifierDisponibilite(Livre livre) {
-        String msg = "Le livre est disponible : " + (livre != null ? livre.toString() : "null");
-        notificationService.notifyObservers(msg);
+    public void notifierDisponibilite(LivrePhysique livre) {
+        if (livre.getEtat().toString().equals("Disponible")) {
+            String msg = "Le livre est disponible : " + livre.toString();
+            notificationService.notifyObservers(msg);
+        }
     }
 
     public void sauvegarder(File destination) throws Exception {
@@ -64,16 +55,11 @@ public class BibliothequeFacade {
         return strategie.calculerAmende(joursRetard);
     }
 
-    // Méthodes d'exemple pour emprunt/rendu/réservation : à adapter en fonction de votre API
-    public void emprunter(Livre livre, Adherent adherent) {
-        throw new UnsupportedOperationException("Implémenter la logique d'emprunt en adaptant à votre Bibliotheque");
+    public void emprunter(LivrePhysique livre, Adherent adherent) {
+        adherent.emprunterLivrePhysique(livre);
     }
 
-    public void rendre(Livre livre, Adherent adherent) {
-        throw new UnsupportedOperationException("Implémenter la logique de retour en adaptant à votre Bibliotheque");
-    }
-
-    public void reserver(Livre livre, Adherent adherent) {
-        throw new UnsupportedOperationException("Implémenter la logique de réservation en adaptant à votre Bibliotheque");
+    public void rendre(LivrePhysique livre, Adherent adherent) {
+        adherent.rendreLivrePhysique(livre);
     }
 }

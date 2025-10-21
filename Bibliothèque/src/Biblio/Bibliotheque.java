@@ -8,7 +8,7 @@ public class Bibliotheque {
 	private ArrayList<Livre> bibliotheque;
 	private ArrayList<Adherent> adherents;
 	
-	Bibliotheque (String n){
+	public Bibliotheque (String n){
 		
 		this.nom=n;
 		this.bibliotheque = new ArrayList<Livre>();
